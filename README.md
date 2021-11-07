@@ -65,7 +65,7 @@ Criterios de aceptación:
 
 ### c. Filtrar por rango de fecha de vacunación.
 
-# Instalación de dependencias
+# Instalación
 
 ```bash
 $ git clone https://github.com/jonathanJet/krugerTestFrontEnd.git
