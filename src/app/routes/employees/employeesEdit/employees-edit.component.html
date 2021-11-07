@@ -1,0 +1,79 @@
+<h1 mat-dialog-title>Empleado</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <table class="demo-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="demo-full-width">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" validador letras matInput>
+            <mat-error *ngIf="form.get('name')?.errors?.['required']">
+              El campo es requerido
+            </mat-error>
+        </mat-form-field>
+        </td>
+        
+        <td>
+          <mat-form-field class="demo-full-width">
+            <mat-label>Apelido</mat-label>
+            <input formControlName="lastName" validador letras matInput>
+            <mat-error *ngIf="form.get('lastName')?.errors?.['required']">
+              El campo es requerido
+            </mat-error>
+        </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="demo-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="demo-full-width">
+            <mat-label>Cedula</mat-label>
+            <input formControlName="identification" validador numeros matInput maxlength="10">
+            <mat-error *ngIf="form.get('identification')?.errors?.['identificacion']">
+              Número de Cédula Incorrecto
+            </mat-error>
+            <mat-error *ngIf="form.get('identification')?.errors?.['required']">
+              El campo es requerido
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="demo-full-width">
+          <mat-label>Correo</mat-label>
+          <input formControlName="email" matInput>
+          <mat-error *ngIf="form.get('email')?.errors?.['email']">
+            Correo no válido
+          </mat-error>
+          <mat-error *ngIf="form.get('email')?.errors?.['required']">
+            El campo es requerido
+          </mat-error>
+        </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="demo-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="demo-full-width">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="role">
+                <mat-option value="ADMIN">
+                  ADMIN
+                </mat-option>
+                <mat-option value="EMPLEADO">
+                  EMPLEADO
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cerrar</button>
+  <button (click)="Save()" mat-raised-button color="primary" cdkFocusInitial>Guardar</button>
+</div>

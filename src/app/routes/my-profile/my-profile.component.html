@@ -1,0 +1,121 @@
+<page-header class="p-t-32 p-b-48 m-b--24 bg-gray-900"
+             title="Perfil Personal" hideBreadcrumb>
+</page-header>
+<div fxLayout="row wrap" class="matero-row">
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25">
+    <mat-card>
+      <div class="text-center">
+        <img class="m-b-8 r-full" src="./assets/images/avatar.jpg" alt="" width="80">
+        <h2 class="m-t-0 m-b-8 f-w-400">{{ user.name }}</h2>
+       
+        <button (click)="mostrarDatos()" mat-raised-button color="accent" class="m-l-8">Editar Prefil</button>
+      </div>
+    </mat-card>
+  </div>
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="66.67" fxFlex.gt-md="75">
+    <mat-card *ngIf="showData">
+        <mat-card-title>Editar Perfil</mat-card-title>
+      
+        <form class="form-field-full" [formGroup]="form">
+          <div fxLayout="row wrap" fxLayoutGap="8px grid">
+      
+            <div fxFlex="50" fxFlex.lt-md="100">
+                <mat-form-field>
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input formControlName="birthday" matInput autocomplete="off" [matDatepicker]="pickerDate" [max]="maxDate"  readonly>
+                    <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+      
+            <div fxFlex="50" fxFlex.lt-md="100">
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Direccion</mat-label>
+                    <input formControlName="address" matInput>
+                  </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-md="100">
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Teléfono</mat-label>
+                    <input formControlName="telephone" validador numeros matInput>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-md="100">
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Estado Vacunación</mat-label>
+                    <mat-select formControlName="vacunationState">
+                        <mat-option value="N">
+                            No Vacunado
+                        </mat-option>
+                        <mat-option value="V">
+                          Vacunado
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+            <div fxFlex="100" *ngIf="form.get('vacunationState')?.value == 'V'">
+
+                <button (click)="addVacunationData(null)" mat-raised-button color="primary" class="m-t-8">Añadir datos vacunacion</button>
+
+                <div  class="m-t-24" formArrayName="VacunationData"
+                    *ngFor="let item of VacunationData.controls; let i = index; "
+                >
+                    <div [formGroupName]="i" fxLayout="row wrap" fxLayoutGap="8px grid">
+
+                        <div fxFlex="calc(33% - 20px)" fxFlex.lt-md="100" >
+                            <mat-form-field class="m-r-8">
+                                <mat-label>Tipo de vacuna</mat-label>
+                                <mat-select  formControlName="vacuneType">
+                                    <mat-option *ngFor="let vacune of vacunes" [value]="vacune.value">
+                                        {{vacune.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="calc(33% - 20px)" fxFlex.lt-md="100">
+                            <mat-form-field>
+                                <mat-label>Fecha de vacuna</mat-label>
+                                <input formControlName="vacuneDate" matInput autocomplete="off" [matDatepicker]="vacuneDate"  readonly>
+                                <mat-datepicker-toggle matSuffix [for]="vacuneDate"></mat-datepicker-toggle>
+                                <mat-datepicker #vacuneDate></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="calc(10% - 20px)" fxFlex.lt-md="50">
+                            <mat-form-field class="demo-full-width">
+                                <mat-label>Numero de dosis</mat-label>
+                                <input formControlName="dosisNumber" validador numeros matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxFlex="calc(13% - 20px)" fxFlex.lt-md="50">
+                            <button mat-icon-button aria-label="Delete" (click)="deleteVacuneData(i)">
+                                <mat-icon color="accent">delete</mat-icon>
+                              </button>
+                        </div>
+                  
+                        
+                  
+                        
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+          </div>
+      
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button (click)="save()" mat-raised-button color="primary" class="m-t-8">Guardar</button>
+          </div>
+        </form>
+      
+      </mat-card>
+   </div>
+</div>

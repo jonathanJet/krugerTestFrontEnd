@@ -1,0 +1,75 @@
+<page-header class="bg-green-600"></page-header>
+
+<div fxLayout="row wrap" fxLayoutAlign="end none" >
+    <button  class="m-b-16" mat-raised-button color="primary" (click)="new()">Añadir empleado</button>
+</div>
+
+<div class="m-b-16">
+
+    <form class="form-field-full" [formGroup]="form">
+        <div fxLayout="row wrap" fxLayoutGap="8px grid">
+
+            <div fxFlex="20" fxFlex.lt-md="100">
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Estado Vacunación</mat-label>
+                    <mat-select formControlName="vacunationState">
+                        <mat-option value="N">
+                            No Vacunado
+                        </mat-option>
+                        <mat-option value="V">
+                          Vacunado
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+            <div fxFlex="20" fxFlex.lt-md="100">
+                <mat-form-field class="demo-full-width">
+                    <mat-label>Tipo de vacuna</mat-label>
+                    <mat-select  formControlName="vacuneType">
+                        <mat-option *ngFor="let vacune of vacunes" [value]="vacune.value">
+                            {{vacune.name}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+    
+          <div fxFlex="20" fxFlex.lt-md="100">
+              <mat-form-field>
+                  <mat-label>Fecha desde</mat-label>
+                  <input formControlName="dateFrom" matInput autocomplete="off" [matDatepicker]="pickerDateFrom" [max]="form.get('dateTo')?.value"  readonly>
+                  <mat-datepicker-toggle matSuffix [for]="pickerDateFrom"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerDateFrom></mat-datepicker>
+              </mat-form-field>
+          </div>
+
+          <div fxFlex="20" fxFlex.lt-md="100">
+            <mat-form-field>
+                <mat-label>Fecha hasta</mat-label>
+                <input formControlName="dateTo" [min]="form.get('dateFrom')?.value" matInput autocomplete="off" [matDatepicker]="pickerDateTo"  readonly>
+                <mat-datepicker-toggle matSuffix [for]="pickerDateTo"></mat-datepicker-toggle>
+                <mat-datepicker #pickerDateTo></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100">
+            <button (click)="search()" mat-raised-button color="accent">Consultar</button>
+            <button class="m-l-16" (click)="clean()" mat-raised-button color="accent">Limpiar</button>
+        </div>
+
+        </div>
+
+    </form>
+    
+</div>
+
+<mtx-grid [data]="list"
+          [columns]="columns"
+          [loading]="isLoading"
+          [pageOnFront]="showPaginator"
+          [showPaginator]="showPaginator"
+          [pageSizeOptions]="[5,10,50,100]"
+          [pageIndex]="0"
+          [pageSize]="5">
+</mtx-grid>
+

@@ -1,15 +1,15 @@
-import { User } from './interface';
+import { Employee } from '@shared/services/employees.service';
 
-export const admin: User = {
-  id: 1,
-  name: 'Zongbin',
-  email: 'nzb329@163.com',
-  avatar: './assets/images/avatar.jpg',
-};
-
-export const guest: User = {
-  id: null,
+export const guest: Employee = {
+  id: 0,
   name: 'unknown',
   email: 'unknown',
-  avatar: './assets/images/avatar-default.jpg',
+  identification: '',
+  lastName: '',
+  birthday: '',
+  address: '',
+  telephone: '',
+  vacunationState: 'N',
+  role: '',
+  VacunationData: [],
 };

@@ -5,11 +5,13 @@ import { MenuService } from './menu.service';
 import { TokenService } from '../authentication/token.service';
 import { LoginService } from '../authentication/login.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { Employee } from '@shared/services/employees.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StartupService {
+  user!: Employee;
   constructor(
     private token: TokenService,
     private menu: MenuService,
@@ -30,16 +32,30 @@ export class StartupService {
         .subscribe((response: any) => {
           this.menu.addNamespace(response.menu, 'menu');
           this.menu.set(response.menu);
+          if (response.menu.length > 0) {
+            this.login.me().subscribe((x: Employee) => {
+              // Demo purposes only. You can add essential permissions and roles with your own cases.
 
-          // Demo purposes only. You can add essential permissions and roles with your own cases.
-          const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-          this.permissonsSrv.loadPermissions(permissions);
-          this.rolesSrv.addRoles({ ADMIN: permissions });
+              let permissions = [];
 
-          // Tips: Alternative you can add permissions with role at the same time.
-          // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
+              if (x.role === 'ADMIN') {
+                permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
+              } else {
+                permissions = ['canRead'];
+              }
 
-          resolve(null);
+              this.permissonsSrv.loadPermissions(permissions);
+              let roleObject: any = {};
+              roleObject[x.role] = permissions;
+              this.rolesSrv.addRoles(roleObject);
+              resolve(null);
+
+              // Tips: Alternative you can add permissions with role at the same time.
+              // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
+            });
+          } else {
+            resolve(null);
+          }
         });
     });
   }

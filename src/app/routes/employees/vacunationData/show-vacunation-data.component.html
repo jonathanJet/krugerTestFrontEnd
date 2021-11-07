@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Vacunas</h1>
+<div mat-dialog-content>
+  <mtx-grid [data]="list"
+          [columns]="columns"
+          [pageOnFront]="showPaginator"
+          [showPaginator]="showPaginator"
+          [pageSizeOptions]="[5,10,50,100]"
+          [pageIndex]="0"
+          [pageSize]="5">
+</mtx-grid>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cerrar</button>
+</div>

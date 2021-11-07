@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
 import { from, Observable } from 'rxjs';
@@ -7,6 +7,7 @@ import { environment } from '@env/environment';
 import { fromByteArray, toByteArray } from 'base64-js';
 import { find, map, switchMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
+import { Employee } from '@shared/services/employees.service';
 
 function pack(str: string) {
   const bytes: any = [];
@@ -80,27 +81,22 @@ function is(reqInfo: RequestInfo, path: string) {
   providedIn: 'root',
 })
 export class InMemDataService implements InMemoryDbService {
-  private users: User[] = [
-    {
-      id: 1,
-      username: 'ng-matero',
-      password: 'ng-matero',
-      name: 'Zongbin',
-      email: 'nzb329@163.com',
-      avatar: './assets/images/avatar.jpg',
-    },
-    {
-      id: 2,
-      username: 'recca0120',
-      password: 'password',
-      name: 'recca0120',
-      email: 'recca0120@gmail.com',
-      avatar: './assets/images/avatars/avatar-10.jpg',
-    },
-  ];
+  private users: Employee[] = [];
 
   createDb(reqInfo?: RequestInfo): {} | Observable<{}> | Promise<{}> {
     return { users: this.users };
+  }
+
+  constructor() {
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    fetch('http://localhost:3000/employees')
+      .then(response => response.json())
+      .then(data => {
+        this.users = data;
+      });
   }
 
   get(reqInfo: RequestInfo) {
@@ -144,6 +140,7 @@ export class InMemDataService implements InMemoryDbService {
     }
 
     if (is(reqInfo, 'auth/logout')) {
+      this.getEmployees();
       return this.logout(reqInfo);
     }
 
@@ -156,7 +153,9 @@ export class InMemDataService implements InMemoryDbService {
     const { email, password } = req.body;
 
     return from(this.users).pipe(
-      find(user => user.email === email || user.username === email),
+      find(user => {
+        return user.email === email || user.username === email;
+      }),
       map(user => {
         if (!user) {
           return { headers, url, status: STATUS.UNAUTHORIZED, body: {} };

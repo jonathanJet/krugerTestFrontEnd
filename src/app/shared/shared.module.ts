@@ -23,6 +23,9 @@ import { ErrorCodeComponent } from './components/error-code/error-code.component
 import { DisableControlDirective } from './directives/disable-control.directive';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
+import { EmployeesEditComponent } from 'app/routes/employees/employeesEdit/employees-edit.component';
+import { ShowVacunationDataComponent } from 'app/routes/employees/vacunationData/show-vacunation-data.component';
+import { ValidadoresModule } from './directives/validadores.module';
 
 const MODULES: any[] = [
   CommonModule,
@@ -41,9 +44,10 @@ const MODULES: any[] = [
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
+  ValidadoresModule,
 ];
 const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
-const COMPONENTS_DYNAMIC: any[] = [];
+const COMPONENTS_DYNAMIC: any[] = [EmployeesEditComponent, ShowVacunationDataComponent];
 const DIRECTIVES: any[] = [DisableControlDirective];
 const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
 

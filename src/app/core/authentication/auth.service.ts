@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { User } from './interface';
 import { guest } from './user';
 import { LoginService } from './login.service';
+import { Employee } from '@shared/services/employees.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<User>(guest);
+  private user$ = new BehaviorSubject<Employee>(guest);
 
   constructor(private loginService: LoginService, private token: TokenService) {
     this.token

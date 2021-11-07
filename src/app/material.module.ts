@@ -109,10 +109,10 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
       provide: MAT_DATE_FORMATS,
       useValue: {
         parse: {
-          dateInput: 'YYYY-MM-DD',
+          dateInput: 'MM/DD/YYYY',
         },
         display: {
-          dateInput: 'YYYY-MM-DD',
+          dateInput: 'MM/DD/YYYY',
           monthYearLabel: 'YYYY MMM',
           dateA11yLabel: 'LL',
           monthYearA11yLabel: 'YYYY MMM',

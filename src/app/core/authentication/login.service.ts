@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TokenResponse, User } from './interface';
+import { TokenResponse } from './interface';
+import { Employee } from '@shared/services/employees.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class LoginService {
   }
 
   me() {
-    return this.http.get<User>('/me');
+    return this.http.get<Employee>('/me');
   }
 
   menu() {

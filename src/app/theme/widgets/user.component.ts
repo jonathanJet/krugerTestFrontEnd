@@ -12,18 +12,14 @@ import { User } from '@core/authentication/interface';
       mat-button
       [matMenuTriggerFor]="menu"
     >
-      <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
+      <img class="matero-avatar" src="./assets/images/avatar.jpg" width="32" alt="avatar" />
       <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
-      <button routerLink="/profile/overview" mat-menu-item>
+      <button routerLink="/myProfile" mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>{{ 'user.profile' | translate }}</span>
-      </button>
-      <button routerLink="/profile/settings" mat-menu-item>
-        <mat-icon>settings</mat-icon>
-        <span>{{ 'user.settings' | translate }}</span>
       </button>
       <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>

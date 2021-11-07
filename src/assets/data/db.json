@@ -1,0 +1,176 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "identification": "0930867239",
+      "name": "Jonathan",
+      "lastName": "TorresCE",
+      "email": "Hydrogen@gmail.com",
+      "role": "ADMIN",
+      "birthday": "11/1/2021",
+      "address": "Centro2527",
+      "telephone": "0969888822",
+      "vacunationState": "V",
+      "username": "ng-matero",
+      "password": "ng-matero",
+      "VacunationData": [
+        {
+          "id": 1636308698747,
+          "vacuneType": "jyj",
+          "vacuneDate": "11/7/2021",
+          "dosisNumber": 1
+        }
+      ]
+    },
+    {
+      "identification": "0930867239",
+      "name": "Jonathan",
+      "lastName": "Torres",
+      "email": "mail@mail.com",
+      "role": "EMPLEADO",
+      "birthday": "3/3/1994",
+      "address": "NORTE",
+      "telephone": "0999999999",
+      "vacunationState": "V",
+      "username": "mail@mail.com",
+      "password": "0930867239",
+      "VacunationData": [
+        {
+          "id": 1636304733814,
+          "vacuneType": "jyj",
+          "vacuneDate": "11/1/2021",
+          "dosisNumber": 1
+        },
+        {
+          "id": 1636304733814,
+          "vacuneType": "jyj",
+          "vacuneDate": "11/18/2021",
+          "dosisNumber": "2"
+        }
+      ],
+      "id": 1636237632730
+    },
+    {
+      "id": 1636308792432,
+      "identification": "0930867239",
+      "name": "PRUEBA",
+      "lastName": "SPU",
+      "email": "JCORREO@CORREO.com",
+      "role": "ADMIN",
+      "birthday": "3/2/2008",
+      "address": "SUR",
+      "telephone": "09993933",
+      "vacunationState": "V",
+      "username": "JCORREO@CORREO.com",
+      "password": "0930867239",
+      "VacunationData": [
+        {
+          "id": 1636309058394,
+          "vacuneType": "ast",
+          "vacuneDate": "11/3/2021",
+          "dosisNumber": 1
+        }
+      ]
+    },
+    {
+      "id": 1636309168551,
+      "identification": "0930867239",
+      "name": "PEPITO",
+      "lastName": "NOVACUNADO",
+      "email": "pepito@pepito.com",
+      "role": "EMPLEADO",
+      "birthday": "",
+      "address": "",
+      "telephone": "",
+      "vacunationState": "N",
+      "username": "pepito@pepito.com",
+      "password": "0930867239",
+      "VacunationData": []
+    },
+    {
+      "id": 1636313836517,
+      "identification": "0930867239",
+      "name": "jose",
+      "lastName": "cuervo",
+      "email": "cuervo@hotmail.com",
+      "role": "EMPLEADO",
+      "birthday": "",
+      "address": "",
+      "telephone": "",
+      "vacunationState": "N",
+      "username": "cuervo@hotmail.com",
+      "password": "0930867239",
+      "VacunationData": []
+    },
+    {
+      "id": 1636314634895,
+      "identification": "0930867239",
+      "name": "Maria",
+      "lastName": "Lopez",
+      "email": "maria@gmail.com",
+      "role": "EMPLEADO",
+      "birthday": "",
+      "address": "",
+      "telephone": "",
+      "vacunationState": "N",
+      "username": "maria@gmail.com",
+      "password": "0930867239",
+      "VacunationData": []
+    },
+    {
+      "id": 1636314818677,
+      "identification": "0930867239",
+      "name": "Roberto",
+      "lastName": "Paez",
+      "email": "robet@gmail.com",
+      "role": "EMPLEADO",
+      "birthday": "",
+      "address": "",
+      "telephone": "",
+      "vacunationState": "N",
+      "username": "robet@gmail.com",
+      "password": "0930867239",
+      "VacunationData": []
+    },
+    {
+      "id": 1636315140574,
+      "identification": "0930867239",
+      "name": "pepe",
+      "lastName": "pepepepe",
+      "email": "pepe@pepe.com",
+      "role": "EMPLEADO",
+      "birthday": "11/7/2021",
+      "address": "SUR",
+      "telephone": "099999999",
+      "vacunationState": "V",
+      "username": "pepe@pepe.com",
+      "password": "0930867239",
+      "VacunationData": [
+        {
+          "id": 1636315205231,
+          "vacuneType": "ast",
+          "vacuneDate": "11/3/2021",
+          "dosisNumber": 1
+        }
+      ]
+    }
+  ],
+  "vacunes": [
+    {
+      "name": "Sputnik",
+      "value": "spu"
+    },
+    {
+      "name": "AstraZeneca",
+      "value": "ast"
+    },
+    {
+      "name": "Pfizer",
+      "value": "pfi"
+    },
+    {
+      "name": "Jhonson&Jhonson",
+      "value": "jyj"
+    }
+  ]
+}

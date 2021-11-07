@@ -14,7 +14,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { registerLocaleData } from '@angular/common';
+import localePy from '@angular/common/locales/es-Ec';
 import { environment } from '@env/environment';
 import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 import { httpInterceptorProviders } from '@core/interceptors';
@@ -27,6 +28,8 @@ import { InMemDataService } from './shared/in-mem/in-mem-data.service';
 export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+registerLocaleData(localePy, 'es');
 
 @NgModule({
   declarations: [AppComponent],
