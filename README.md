@@ -101,8 +101,8 @@ $ npm run hmr
 Acceder a `http://localhost:4200/`.
 
 - Credenciales: User: ng-matero ; Password: ng-matero
-- Nora: las credenciales para pruebas estan accesibles en el archivo de persistencia
+- Nota: las credenciales para pruebas estan accesibles en el archivo de persistencia
 
-## Author
+## Autor
 
 - **Jonathan Torres C.** - email: jonathan.torresc@hotmail.com
